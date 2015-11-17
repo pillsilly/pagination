@@ -9,11 +9,11 @@ import frank.collection.servlet.ServletContextUtil;
 
 public class PageTagUtil {
 	/**
-	 * ç”Ÿæˆé“¾æ¥
+	 * Éú³ÉÁ´½Ó
 	 *
 	 * @param url
-	 *            "http://website/module.jsp?a=1&b=2" æˆ–è€…
-	 *            "http://website/module.jsp?pagenow=1&pagerows=2" æˆ–è€…
+	 *            "http://website/module.jsp?a=1&b=2" »òÕß
+	 *            "http://website/module.jsp?pagenow=1&pagerows=2" »òÕß
 	 *            "http://website/module.jsp"
 	 * @param pageno
 	 * @param pagerows
@@ -33,11 +33,11 @@ public class PageTagUtil {
 	/**
 	 * public static void main(String[] args) { <br>
 	 * Page page = PageUtil.calcPage("1", "3", "61" );<br>
-	 * System.out.println(" å½“å‰ :"+page.getPageno());<br>
-	 * System.out.println(" æ€»é¡µæ•° :"+page.getPagenoall());<br>
-	 * System.out.println(" æ€»è®°å½•æ•° :"+page.getRowsall());<br>
-	 * System.out.println(" æ¯é¡µ :"+page.getPagerows());<br>
-	 * System.out.println("å¼€å§‹è®¡ç®—é¡µç ");<br>
+	 * System.out.println(" µ±Ç° :"+page.getPageno());<br>
+	 * System.out.println(" ×ÜÒ³Êı :"+page.getPagenoall());<br>
+	 * System.out.println(" ×Ü¼ÇÂ¼Êı :"+page.getRowsall());<br>
+	 * System.out.println(" Ã¿Ò³ :"+page.getPagerows());<br>
+	 * System.out.println("¿ªÊ¼¼ÆËãÒ³Âë");<br>
 	 * PageTag pageTag = PageTagUtil.getPageTags(page, "testurl", 5 );<br>
 	 * System.out.println(pageTag);<br>
 	 * }<br>
@@ -53,7 +53,7 @@ public class PageTagUtil {
 		long totalNum = page.getPagenoall();
 		long pagerows = page.getPagerows();
 		if (totalNum < tagno) {
-			// æ€»æ•°æ¯”é¡µç æ•°è¦å°‘çš„æ—¶å€™
+			// ×ÜÊı±ÈÒ³ÂëÊıÒªÉÙµÄÊ±ºò
 			for (int i = 1; i <= totalNum; i++) {
 				Tag tag = new Tag();
 				tag.setCurrent(currentNum == i);
@@ -62,19 +62,19 @@ public class PageTagUtil {
 				pageTag.getList().add(tag);
 			}
 			PageTagUtil.setParticular(url, page, pageTag);
-			// å®Œæˆ,é€€å‡º
+			// Íê³É,ÍË³ö
 			return pageTag;
 		}
-		// è®¾ç½®åç§»å€¼,å¦‚æœæ˜¯åŸºæ•°,é‚£ä¹ˆä¸ºé¡µç æ•°/2+1 å¦‚æœæ˜¯å¶æ•°,é‚£ä¹ˆæ˜¯é¡µç æ•°/2
+		// ÉèÖÃÆ«ÒÆÖµ,Èç¹ûÊÇ»ùÊı,ÄÇÃ´ÎªÒ³ÂëÊı/2+1 Èç¹ûÊÇÅ¼Êı,ÄÇÃ´ÊÇÒ³ÂëÊı/2
 		int offset = 0;
 		if (tagno % 2 != 0) {
 			offset = (tagno / 2) + 1;
 		} else {
 			offset = (tagno / 2);
 		}
-		// å½“å‰é¡µå°äºæ€»é¡µæ•°å¹¶ä¸”å¤§äº0
+		// µ±Ç°Ò³Ğ¡ÓÚ×ÜÒ³Êı²¢ÇÒ´óÓÚ0
 		if (currentNum > 0 && currentNum <= totalNum) {
-			// å½“å‰é¡µå¤„äºå‰Né¡µä¸­,N=offsetåç§»å€¼
+			// µ±Ç°Ò³´¦ÓÚÇ°NÒ³ÖĞ,N=offsetÆ«ÒÆÖµ
 			if (currentNum < offset) {
 				for (int i = 1; i <= tagno; i++) {
 					Tag tag = new Tag();
@@ -84,7 +84,7 @@ public class PageTagUtil {
 					pageTag.getList().add(tag);
 				}
 			} else if (currentNum > (totalNum - offset)) {
-				// å½“å‰é¡µå¤„äºåNé¡µä¸­,N=offsetåç§»å€¼
+				// µ±Ç°Ò³´¦ÓÚºóNÒ³ÖĞ,N=offsetÆ«ÒÆÖµ
 				for (long i = (totalNum - tagno) + 1; i <= totalNum; i++) {
 					Tag tag = new Tag();
 					tag.setCurrent(currentNum == i);
@@ -93,7 +93,7 @@ public class PageTagUtil {
 					pageTag.getList().add(tag);
 				}
 			} else {
-				// å½“å‰é¡µå¤„äºä¸­é—´é¡µä¸­,ä»ç¬¬tagno-offsetä¸ªé¡µé¢å‘åè¾“å‡ºtagnoé¡µ
+				// µ±Ç°Ò³´¦ÓÚÖĞ¼äÒ³ÖĞ,´ÓµÚtagno-offset¸öÒ³ÃæÏòºóÊä³ötagnoÒ³
 				for (int i = 1; i <= tagno; i++) {
 					Tag tag = new Tag();
 					tag.setCurrent((currentNum - offset + i) == currentNum);

@@ -51,11 +51,21 @@ public class PaginationInterceptor implements  Interceptor {
 	static int RESULT_HANDLER_INDEX = 3;
 
 	Dialect dialect;
+	
+	public Dialect getDialect() {
+		return dialect;
+	}
+	
+	public void setDialect(Dialect dialect) {
+		this.dialect = dialect;
+	}
 
 	protected Transaction transaction;
 
 	public Object intercept(Invocation invocation) throws Throwable {
-		CachingExecutor ce = (CachingExecutor) invocation.getTarget();
+//		CachingExecutor ce = (CachingExecutor) invocation.getTarget();
+		final Executor ce = (Executor) invocation.getTarget();
+		//executor.getTransaction()
 		transaction = ce.getTransaction();
 		processIntercept(invocation.getArgs());
 		return invocation.proceed();
