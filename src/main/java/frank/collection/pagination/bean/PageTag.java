@@ -5,17 +5,17 @@ import java.util.List;
 
 public class PageTag {
 
-	/** ��һҳ **/
+	/** 下一页 **/
 	public Tag next = new Tag();
-	/** ��һҳ **/
+	/** 上一页 **/
 	public Tag prev = new Tag();
-	/** ��һҳ **/
+	/** 第一页 **/
 	public Tag first = new Tag();
-	/** ���һҳ **/
+	/** 最后一页 **/
 	public Tag last = new Tag();
-	/** ҳ�� **/
+	/** 页码 **/
 	public List<Tag> list = new ArrayList<Tag>(5);
-	/** ��ǰҳ  **/
+	/** 当前页  **/
 	public Tag current= new Tag();
 	
 	

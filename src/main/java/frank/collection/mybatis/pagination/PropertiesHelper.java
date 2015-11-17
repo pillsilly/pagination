@@ -15,12 +15,12 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * PropertiesµÄ²Ù×÷µÄ¹¤¾ßÀà,ÎªPropertiesÌá¹©Ò»¸ö´úÀíÔö¼ÓÏà¹Ø¹¤¾ß·½·¨Èç getRequiredString(),getInt(),getBoolean()µÈ·½·¨
- * ²¢¿ÉÒÔÍ¨¹ısystemPropertiesModeÊôĞÔÖ¸¶¨ÊÇ·ñËÑË÷System.getProperty()¼°System.getenv()À´²éÕÒÖµ.
- * Ä¬ÈÏ²»ËÑË÷ÏµÍ³ÊôĞÔ
+ * Propertiesçš„æ“ä½œçš„å·¥å…·ç±»,ä¸ºPropertiesæä¾›ä¸€ä¸ªä»£ç†å¢åŠ ç›¸å…³å·¥å…·æ–¹æ³•å¦‚ getRequiredString(),getInt(),getBoolean()ç­‰æ–¹æ³•
+ * å¹¶å¯ä»¥é€šè¿‡systemPropertiesModeå±æ€§æŒ‡å®šæ˜¯å¦æœç´¢System.getProperty()åŠSystem.getenv()æ¥æŸ¥æ‰¾å€¼.
+ * é»˜è®¤ä¸æœç´¢ç³»ç»Ÿå±æ€§
  *
  * <pre>
- * Ê¹ÓÃ1:
+ * ä½¿ç”¨1:
  * public class ConnectionUtils {
  *     static Properties properties = new Properties();
  *     // ... do load properties
@@ -32,7 +32,7 @@ import java.util.Set;
  *     		DriverManager.getConnection(props.getRequiredString("jdbc.url"));
  *     }
  * }
- * Ö¸¶¨ÊÇ·ñËÑË÷ÏµÍ³ÊôĞÔ:
+ * æŒ‡å®šæ˜¯å¦æœç´¢ç³»ç»Ÿå±æ€§:
  * new PropertiesHelper(properties,PropertiesHelper.SYSTEM_PROPERTIES_MODE_OVERRIDE)
  * </pre>
  * @author badqiu
@@ -102,7 +102,7 @@ public class PropertiesHelper {
 	}
 
 	/**
-	 * ³¢ÊÔ´ÓSystem.getProperty(key)¼°System.getenv(key)µÃµ½Öµ
+	 * å°è¯•ä»System.getProperty(key)åŠSystem.getenv(key)å¾—åˆ°å€¼
 	 * @return
 	 */
 	public String getAndTryFromSystem(String key) {

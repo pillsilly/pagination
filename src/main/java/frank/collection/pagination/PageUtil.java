@@ -9,7 +9,7 @@ import frank.collection.pagination.bean.Page;
 public class PageUtil {
 	static final Logger logger = Logger.getLogger(PageUtil.class);
 	/**
-	 * ´¦Àí´«ÈëÊı×ÖÎª×Ö·û´®µÄÇé¿ö
+	 * å¤„ç†ä¼ å…¥æ•°å­—ä¸ºå­—ç¬¦ä¸²çš„æƒ…å†µ
 	 *
 	 * @param sPageno
 	 * @param sPageRows
@@ -20,23 +20,23 @@ public class PageUtil {
 	public static final Page getPage(String sPageno, String sPageRows, String sRowsAll ) {
 		//default
 		Page page = new Page();
-		// µ±Ç°Ò³ºÅ
+		// å½“å‰é¡µå·
 		Long pageno = page.getPageno();
-		// Ã¿Ò³ÏÔÊ¾ÌõÊı
+		// æ¯é¡µæ˜¾ç¤ºæ¡æ•°
 		Long pagerows = page.getPagerows();
-		// ×Ü¼ÇÂ¼Êı
+		// æ€»è®°å½•æ•°
 		Long rowsall = page.getRowsall();
 		try {
-			// begin---------´¦ÀíÒ³Êı
-			// Ã¿Ò³¶àÉÙĞĞ
+			// begin---------å¤„ç†é¡µæ•°
+			// æ¯é¡µå¤šå°‘è¡Œ
 			if (StringUtils.isNumeric(sPageRows)) {
 				pagerows = new Long(sPageRows);
 			}
-			// µ±Ç°Ò³
+			// å½“å‰é¡µ
 			if (StringUtils.isNumeric(sPageno)) {
 				pageno = new Long(sPageno);
 			}
-			// ×ÜÒ³Êı
+			// æ€»é¡µæ•°
 			if (StringUtils.isNumeric(sRowsAll)) {
 				rowsall = new Long(sRowsAll);
 			}
@@ -48,7 +48,7 @@ public class PageUtil {
 	}
 
 	/**
-	 * ¼ÆËãpage¶ÔÏó
+	 * è®¡ç®—pageå¯¹è±¡
 	 *
 	 * @param pageno
 	 * @param pagerows
@@ -58,23 +58,23 @@ public class PageUtil {
 	public static final Page getPage(Long pageno, Long pagerows, Long rowsall ) {
 		Page page = new Page();
 		Long pagenoall = 1L;
-		// begin---------´¦ÀíÒ³Êı
+		// begin---------å¤„ç†é¡µæ•°
 		if (rowsall == null || rowsall.longValue() <= 0) {
 			rowsall = 0L;
 		}
-		// ¼ÆËãµ±Ç°Ò³£¬²»ÄÜ³¬¹ıÏŞÖÆ
+		// è®¡ç®—å½“å‰é¡µï¼Œä¸èƒ½è¶…è¿‡é™åˆ¶
 		if (rowsall.longValue() <= pagerows.longValue()) {
 			pageno = 1L;
 		} else {
-			// ¼ÆËã×ÜÒ³Êı
+			// è®¡ç®—æ€»é¡µæ•°
 			long allpagenoTemp = rowsall.longValue() / pagerows.longValue();
 			if (rowsall.longValue() % pagerows.longValue() != 0) {
-				// Èç¹û²»ÊÇÕûÊıÒ³£¬¾Í¶àÒ»Ò³
+				// å¦‚æœä¸æ˜¯æ•´æ•°é¡µï¼Œå°±å¤šä¸€é¡µ
 				allpagenoTemp = allpagenoTemp + 1;
 			}
 			pagenoall = allpagenoTemp;
 		}
-		// µ±Ç°Ò³²»ÄÜ³¬¹ı×î´óÒ³
+		// å½“å‰é¡µä¸èƒ½è¶…è¿‡æœ€å¤§é¡µ
 		if (pageno.longValue() > pagenoall.longValue()) {
 			pageno = pagenoall;
 		}

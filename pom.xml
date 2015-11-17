@@ -1,9 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
 	<groupId>com.github.pillsilly</groupId>
 	<artifactId>paging_suites</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>paging_suites</name>
 	<description>yet another mybatis plugin for pagination</description>
 	<url>https://github.com/pillsilly/pagination</url>
@@ -24,7 +25,25 @@
 		<developerConnection>scm:git@github.com:pillsilly/pagination.git</developerConnection>
 		<url>git@github.com:pillsilly/pagination.git</url>
 	</scm>
+	<properties>
+		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
+	</properties>
 
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<dependencies>
 		<dependency>
@@ -91,7 +110,7 @@
 							</execution>
 						</executions>
 					</plugin>
-					<!-- Javadoc
+					<!-- Javadoc -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
@@ -104,7 +123,13 @@
 								</goals>
 							</execution>
 						</executions>
-					</plugin> -->
+						<configuration>
+							<encoding>UTF-8</encoding>
+							<charset>UTF-8</charset>
+							<additionalparam>-Xdoclint:none</additionalparam>
+						</configuration>
+					</plugin>
+
 					<!-- Gpg Signature -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -120,18 +145,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>3.1</version>
-						<configuration>
-							<source>1.7</source>
-							<target>1.7</target>
-							<encoding>UTF-8</encoding>
-						</configuration>
-					</plugin>
-
 				</plugins>
 			</build>
 		</profile>

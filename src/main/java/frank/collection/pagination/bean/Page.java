@@ -2,19 +2,19 @@ package frank.collection.pagination.bean;
 
 public class Page {
 	/**
-	 * Ò³Âë
+	 * é¡µç 
 	 */
 	public static final String PAGENO = "pageno";
 	/**
-	 * Ã¿Ò³ÊıÁ¿
+	 * æ¯é¡µæ•°é‡
 	 */
 	public static final String PAGEROWS = "pagerows";
 	/**
-	 * ×ÜÒ³Êı
+	 * æ€»é¡µæ•°
 	 */
 	public static final String PAGENOALL = "pagenoall";
 	/**
-	 * ×Ü¼ÇÂ¼Êı
+	 * æ€»è®°å½•æ•°
 	 */
 	public static final String ROWSALL = "rowsall";
 	 
@@ -23,7 +23,7 @@ public class Page {
 	private Long pagenoall = 1L;
 	private Long rowsall = 0L;
 	
-	//ÊÇ·ñ»º´æcount,ĞèÒªÔÙrowsallÖĞÉè¶¨·Ç0
+	//æ˜¯å¦ç¼“å­˜count,éœ€è¦å†rowsallä¸­è®¾å®šé0
 	private boolean isCountCache = false; 
 	
 	public boolean isCountCache() {
