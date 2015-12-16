@@ -5,7 +5,6 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.executor.CachingExecutor;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -55,9 +54,11 @@ public class PaginationInterceptor implements  Interceptor {
 	protected Transaction transaction;
 
 	public Object intercept(Invocation invocation) throws Throwable {
-		CachingExecutor ce = (CachingExecutor) invocation.getTarget();
-		transaction = ce.getTransaction();
-		processIntercept(invocation.getArgs());
+		if(invocation!=null && invocation.getTarget() instanceof Executor){
+			Executor ce = (Executor) invocation.getTarget();
+			transaction = ce.getTransaction();
+			processIntercept(invocation.getArgs());
+		} 
 		return invocation.proceed();
 	}
 
